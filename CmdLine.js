@@ -22,12 +22,11 @@ var CmdLine = (function() {
           break;
         case 'Enter':
           hide();
-          // FALLTHROUGH
-        default:
           var input = this.value;
           if (input) {
             commandCallback(input);
-          }
+            }
+        default:
       }
     }).blur(function() {
       hide();
@@ -36,7 +35,7 @@ var CmdLine = (function() {
 
   var selection;
   var commandCallback;
-  function show(promptString) {
+  function show(promptString, defaultString) {
     $('#__vrome_cmdline_prompt').html(promptString);
     selection = [];
     var sel = window.getSelection();
@@ -45,7 +44,7 @@ var CmdLine = (function() {
     }
     
     cmdWindow().fadeIn('fast');
-    cmdline().val('')[0].focus();
+    cmdline().val(defaultString)[0].focus();
   }
 
   function hide() {
@@ -61,7 +60,7 @@ var CmdLine = (function() {
   return {
     query: function(promptString, defaultString, callback) {
       commandCallback = callback;
-      show(promptString);
+      show(promptString, defaultString);
     }
   }
 }());
