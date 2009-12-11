@@ -7,7 +7,7 @@
     "js": ["chinese-pinyin.js", "util.js", "jquery.js", "KeyEvent.js", "Action.js", "VromeMode.js", "NormalMode.js", "HintMode.js", "ZoomMode.js", "MinorModes.js", "Scroller.js", "Vrome.js", "Search.js", "CmdLine.js"],
     "css": ["cmdline.css"],
     "run_at": "document_start",
-    "matches": [ "http://*/*", "https://*/*", "ftp://*/*"]
+    "matches": [ "http://*/*", "https://*/*", "ftp://*/*", "file://*/*"]
   } ],
   "permissions": [
     "tabs"
