@@ -7,6 +7,14 @@ var Action = {
     SmoothScroller.scroll(-1, true);
   },
 
+  smoothScrollDownMore: function(){
+    SmoothScroller.scroll(2, true);
+  },
+
+  smoothScrollUpMore: function(){
+    SmoothScroller.scroll(-2, true);
+  },
+
   smoothScrollRight: function(){
     SmoothScroller.scroll(1, false);
   },

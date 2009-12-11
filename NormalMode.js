@@ -1,6 +1,8 @@
 var NormalMode = new VromeMode({
   'j': Action.smoothScrollDown,
   'k': Action.smoothScrollUp,
+  'J': Action.smoothScrollDownMore,
+  'K': Action.smoothScrollUpMore,
   'h': Action.smoothScrollLeft,
   'l': Action.smoothScrollRight,
   'r': Action.reload,
