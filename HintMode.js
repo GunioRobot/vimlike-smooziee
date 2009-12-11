@@ -146,6 +146,7 @@ var HintMode = (function() {
       var port = chrome.extension.connect();
       // TODO: ajax, <select>
       port.postMessage({action: "open_url", url: elem.href, newtab: hint_open_in_new_tab});
+      removeHints();
     } else if (tag_name == 'input' && (type == "submit" || type == "button" || type == "reset")) {
       elem.click();
     } else if (tag_name == 'input' && (type == "radio" || type == "checkbox")) {

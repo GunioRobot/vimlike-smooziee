@@ -3,3 +3,4 @@ vimlike-smooziee.pem
 preinstall.sh
 tmp
 .DS_Store
+*.swp
