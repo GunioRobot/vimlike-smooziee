@@ -3,12 +3,12 @@ var Action = {
     SmoothScroller.scroll(1, true);
   },
 
-  smoothScrollUp: function(){
-    SmoothScroller.scroll(-1, true);
-  },
-
   smoothScrollDownMore: function(){
     SmoothScroller.scroll(2, true);
+  },
+
+  smoothScrollUp: function(){
+    SmoothScroller.scroll(-1, true);
   },
 
   smoothScrollUpMore: function(){
@@ -223,7 +223,50 @@ var Action = {
     elem.setSelectionRange(position,position);
   },
 
-	forwardSearch: function() {
+  //openURL: function() {
+  //  CmdLine.query('Open: ', '', function(URL) {
+  //    var port = chrome.extension.connect();
+  //    port.postMessage({action: "open_url", url: filterURL(URL)});
+  //  });
+  //},
+
+  openURLnoDefault: function() {
+    openURL('Open: ', '', false);
+  },
+
+
+  openURLwithDefault: function() {
+    openURL('Open: ', location.href, false);
+  },
+
+  openURLnoDefaultNewTab: function() {
+    openURL('Tabopen: ', '', true);
+  },
+
+  openURLwithDefaultNewTab: function() {
+    openURL('Tabopen: ', location.href, true);
+  },
+
+  newTabOpenURL: function() {
+    CmdLine.query('Tabopen: ', '', function(URL) {
+      var port = chrome.extension.connect();
+      port.postMessage({action: "open_url", url: filterURL(URL), newtab: true});
+    });
+  },
+
+  yankURL: function() {
+    Clipboard.copy(document.location);
+  },
+
+	buffer: function() {
+    CmdLine.query('Buffer: ', '', function(Buffer) {
+      var buffNum = Number(Buffer) - 1;
+      var port = chrome.extension.connect();
+      port.postMessage({action: "select_tab", index: buffNum});
+    });
+  },
+  
+  forwardSearch: function() {
     CmdLine.query('Forward search: /', Search.getLastSearchString(), function(searchString) {
       Search.find(searchString);
     }); 

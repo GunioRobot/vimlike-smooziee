@@ -42,7 +42,7 @@ var Vrome = (function(){
   };
 })();
 
-var exclude_urls = [/\/\/www\.google\.[^\/]+\/(reader|search)/,  /\/\/mail\.google\.com\//, /\/\/www\.pivotaltracker\.com\//];
+var exclude_urls = [/\/\/www\.google\.[^\/]+\/(reader)/,  /\/\/mail\.google\.com\//, /\/\/www\.pivotaltracker\.com\//];
 
 for (var i = 0; i < exclude_urls.length; i++) {
   if (exclude_urls[i].test(location.href)) {

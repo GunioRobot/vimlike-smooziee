@@ -1,7 +1,7 @@
 var NormalMode = new VromeMode({
   'j': Action.smoothScrollDown,
-  'k': Action.smoothScrollUp,
   'J': Action.smoothScrollDownMore,
+  'k': Action.smoothScrollUp,
   'K': Action.smoothScrollUpMore,
   'h': Action.smoothScrollLeft,
   'l': Action.smoothScrollRight,
@@ -29,7 +29,13 @@ var NormalMode = new VromeMode({
   '?': Action.backwardSearch,
   'n': Action.repeatSearch,
   'N': Action.reverseSearch,
-  'Enter': Action.followSelectedLink
+  'Enter': Action.followSelectedLink,
+  'o': Action.openURLnoDefault,
+  'O': Action.openURLwithDefault,
+  't': Action.openURLnoDefaultNewTab,
+  'T': Action.openURLwithDefaultNewTab,
+  'y': Action.yankURL,
+  'b': Action.buffer
 });
 
 VromeMode.prototype.defaultNextMode = NormalMode;

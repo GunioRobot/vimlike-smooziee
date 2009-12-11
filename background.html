@@ -58,6 +58,14 @@ chrome.extension.onConnect.addListener(function(port, name) {
         }
       });
       break;
+    case "select_tab":
+      chrome.tabs.getAllInWindow(tab.windowId, function(tabs) {
+        var select_tab = tabs[msg.index];
+        if (select_tab) {
+          chrome.tabs.update(select_tab.id, {selected: true});
+        }
+      });    
+      break;
     case "open_url":
       if (msg.newtab) { 
         chrome.tabs.create({url: msg.url, index: tab.index + 1});
