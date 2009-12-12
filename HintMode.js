@@ -10,7 +10,7 @@ var HintMode = (function() {
       e.preventDefault();  //Stop Default Event
 
       if (pressedKey =='Esc') {
-	removeHints();
+	      removeHints();
       } else {
         if(pressedKey == 'Enter'){
           highlightAndJumpCurrentHint('',true);
@@ -141,21 +141,26 @@ var HintMode = (function() {
 
     var tag_name = elem.tagName.toLowerCase();
     var type = elem.type ? elem.type.toLowerCase() : "";
-    if (tag_name == 'a' && elem.href != '') {
-      setHighlight(elem, true);
-      var port = chrome.extension.connect();
-      // TODO: ajax, <select>
-      port.postMessage({action: "open_url", url: elem.href, newtab: hint_open_in_new_tab});
-      removeHints();
-    } else if (tag_name == 'input' && (type == "submit" || type == "button" || type == "reset")) {
+    // TODO: ajax, <select>
+    if (tag_name == 'a') {
+      if (elem.href != '') {
+        setHighlight(elem, true);
+        removeHints();
+        var port = chrome.extension.connect();
+        port.postMessage({action: "open_url", url: elem.href, newtab: hint_open_in_new_tab});
+      }
+    } else if ((tag_name == 'input' && (type == "file" || type == "submit" || type == "button" || type == "reset")) || (tag_name == 'button')) {
       elem.click();
+      removeHints();
     } else if (tag_name == 'input' && (type == "radio" || type == "checkbox")) {
-      // TODO: toggle checkbox
       elem.checked = !elem.checked;
       removeHints();
     } else if (tag_name == 'input' || tag_name == 'textarea') {
       elem.focus();
       elem.setSelectionRange(elem.value.length, elem.value.length);
+      removeHints();
+    } else if (tag_name == 'select') {
+      elem.focus();
       removeHints();
     }
   }
