@@ -5,25 +5,25 @@ function extend(obj, members) {
   return obj;
 }
 
-Clipboard = {}; 
-Clipboard.utilities = {}; 
-Clipboard.utilities.createTextArea = function(value) { 
-    var txt = document.createElement('textarea'); 
-    txt.style.position = "absolute"; 
-    txt.style.left = "-100%"; 
-    if (value != null) 
-        txt.value = value; 
-    document.body.appendChild(txt); 
-    return txt; 
-}; 
+Clipboard = {};
+Clipboard.utilities = {};
+Clipboard.utilities.createTextArea = function(value) {
+    var txt = document.createElement('textarea');
+    txt.style.position = "absolute";
+    txt.style.left = "-100%";
+    if (value != null)
+        txt.value = value;
+    document.body.appendChild(txt);
+    return txt;
+};
 
-Clipboard.copy = function(data) { 
-    if (data == null) return; 
-    var txt = Clipboard.utilities.createTextArea(data); 
-    txt.select(); 
-    document.execCommand('Copy'); 
-    document.body.removeChild(txt); 
-}; 
+Clipboard.copy = function(data) {
+    if (data == null) return;
+    var txt = Clipboard.utilities.createTextArea(data);
+    txt.select();
+    document.execCommand('Copy');
+    document.body.removeChild(txt);
+};
 
 function filterURL(URL) {
   if(new RegExp('\.com|www\.|\.org|\.net|\.edu|\.biz|\.gov|[a-z][a-z]\\.[a-z][a-z]','im').test(URL)) {

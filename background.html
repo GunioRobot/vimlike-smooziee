@@ -26,7 +26,7 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
   if(now_tab) {
     closed_tabs.push(now_tab);
   };
-}); 
+});
 
 chrome.extension.onConnect.addListener(function(port, name) {
   port.onMessage.addListener(function(msg) {
@@ -64,10 +64,10 @@ chrome.extension.onConnect.addListener(function(port, name) {
         if (select_tab) {
           chrome.tabs.update(select_tab.id, {selected: true});
         }
-      });    
+      });
       break;
     case "open_url":
-      if (msg.newtab) { 
+      if (msg.newtab) {
         chrome.tabs.create({url: msg.url, index: tab.index + 1});
         var myport = chrome.tabs.connect(tab.id, {});
         myport.postMessage({action: "remove_hints"});

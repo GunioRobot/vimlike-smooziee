@@ -265,11 +265,11 @@ var Action = {
       port.postMessage({action: "select_tab", index: buffNum});
     });
   },
-  
+
   forwardSearch: function() {
     CmdLine.query('Forward search: /', Search.getLastSearchString(), function(searchString) {
       Search.find(searchString);
-    }); 
+    });
     // cmdWindow().fadeIn();
     // cmdline().val('/')[0].focus();
 	},
@@ -277,7 +277,7 @@ var Action = {
   backwardSearch: function() {
     CmdLine.query('Backward search: ?', Search.getLastSearchString(), function(searchString) {
       Search.find(searchString, true);
-    }); 
+    });
   },
 
   repeatSearch: function() {

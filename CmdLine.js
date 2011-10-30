@@ -42,7 +42,7 @@ var CmdLine = (function() {
     for (var i = 0; i < sel.rangeCount; i++) {
       selection[i] = sel.getRangeAt(i);
     }
-    
+
     cmdWindow().fadeIn('fast');
     cmdline().val(defaultString)[0].focus();
   }

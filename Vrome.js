@@ -29,7 +29,7 @@ var Vrome = (function(){
 			}
 		});
 	});
-	
+
 
   return {
     setNextMode: function(mode) {
